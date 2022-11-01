@@ -1,0 +1,54 @@
+<?php
+session_start(); // startar session, efter denna kan vi använda session-variabler
+
+//kopplar upp mot db
+$pdo = new PDO('mysql:dbname=grupp7;host=localhost', 'sqllab', 'Hare#2022');
+
+if(isset($_POST["laggatillknappen"])){
+  $querystring='INSERT INTO test (testdata) VALUES(:data);';
+  $stmt = $pdo->prepare($querystring);
+  $stmt->bindParam(':data', $_POST['litedata']);
+  $stmt->execute();
+}
+
+if(isset($_POST["rensaknappen"])){
+  $querystring='TRUNCATE TABLE test;';
+  $stmt = $pdo->prepare($querystring);
+  $stmt->execute();
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exempeldb</title>
+</head>
+<body>
+  <table style="border-collapse:collapse; border:1px solid black;">
+  <?php
+    
+
+    foreach($pdo->query("SELECT * FROM test") as $row){
+      echo "<tr style='border:1px solid black;'>";
+      echo "<td>".$row['testdata']."</td>";      
+      echo "</tr>";
+    }    
+  ?>
+  </table>
+
+<form action="" method="post">
+  <label>
+    testdata
+    <input type="text" name="litedata">
+  </label>
+  <input type="submit" value="Klicka här för att lägga till" name="laggatillknappen">
+</form>
+<form action="" method="post">
+  <input type="submit" value="Rensa" name="rensaknappen">
+</form>
+
+</body>
+</html>
