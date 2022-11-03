@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrering Hälsans Vårdcentral</title>
+</head>
+<body>
+    
+    <h1>Registrering Hälsans Vårdcentral</h1>
+
+    <form action="process-signup.php" method="post">
+    <div>
+        <label for="name">Namn</label>
+        <input type="text" name="name" id="name">
+    </div>
+
+    <div>
+        <label for="email">E-Mail</label>
+        <input type="email" name="email" id="email">
+    </div>
+
+    <div>
+        <label for="name">Telefon</label>
+        <input type="number" name="telefon" id="telefon">
+    </div>
+
+    <div>
+        <label for="name">Personnummer (10 siffror)</label>
+        <input type="text" name="pnr" id="pnr" placeholder="XXXXXX-XXXX">
+    </div>
+
+    <div>
+        <label for="password">Lösenord</label>
+        <input type="password" name="password" id="password">
+    </div>
+
+    <div>
+        <label for="password">Upprepa Lösenord</label>
+        <input type="password" name="password_confirmation" id="password_confirmation">
+    </div>
+
+    <button type="submit">Registrera</button>
+
+
+    </form>
+</body>
+</html>
